@@ -8,14 +8,14 @@
   <b>Kotlin Metaprogramming & Code Generation Toolkit</b>
 </p>
 
-<p align="center">
-  <a href="https://search.maven.org/search?q=g:dev.mabd.kmeta">
-    <img src="https://img.shields.io/maven-central/v/dev.mabd.kmeta/kmeta" alt="Maven Central">
-  </a>
-  <a href="https://search.maven.org/artifact/dev.mabd.kmeta/kmeta">
-    <img src="https://img.shields.io/badge/version-latest-blue.svg" alt="Latest Version">
-  </a>
-</p>
+<!-- <p align="center"> -->
+<!--   <a href="https://search.maven.org/search?q=g:dev.mabd.kmeta"> -->
+<!--     <img src="https://img.shields.io/maven-central/v/dev.mabd.kmeta/kmeta" alt="Maven Central"> -->
+<!--   </a> -->
+<!--   <a href="https://search.maven.org/artifact/dev.mabd.kmeta/kmeta"> -->
+<!--     <img src="https://img.shields.io/badge/version-latest-blue.svg" alt="Latest Version"> -->
+<!--   </a> -->
+<!-- </p> -->
 
 
 # Table Of Content:
