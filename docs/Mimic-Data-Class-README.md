@@ -53,7 +53,7 @@ This function mimics Kotlin’s data class toString, allowing you to convenientl
 class Person(val name: String, val age: Int)
 
 
-// @Copy generates this function:
+// @ToNiceString generates this function:
 fun Person.toNiceString(): String {
     return "Person(name=$name, age=$age)"
 }
