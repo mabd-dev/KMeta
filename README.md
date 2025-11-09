@@ -67,8 +67,8 @@ Add KMeta to your dependencies:
 ```kotlin
 dependencies {
     // KMeta processor
-    implementation("com.github.mabd-dev:KMeta:1.0.0")
-    ksp("com.github.mabd-dev:KMeta:1.0.0")
+    implementation("com.github.mabd-dev:KMeta:@latest")
+    ksp("com.github.mabd-dev:KMeta:@latest")
 }
 ```
 
@@ -100,8 +100,8 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.M-Abd-Elmawla:KMeta:1.0.0")
-    ksp("com.github.M-Abd-Elmawla:KMeta:1.0.0")
+    implementation("com.github.M-Abd-Elmawla:KMeta:@latest")
+    ksp("com.github.M-Abd-Elmawla:KMeta:@latest")
 }
 
 kotlin {
