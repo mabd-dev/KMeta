@@ -127,13 +127,13 @@ interface ApiService {
 }
 
 // Generated code
-public class ApiService2LoggerImpl(
-    private val `delegate`: ApiService2,
+public class ApiServiceLoggerImpl(
+    private val `delegate`: ApiService,
 ): ApiService {
     
     override fun fetchUserNames(): List<String> {
         val result = delegate.fetchUserNames()
-        println("ApiService2LoggerImpl: fetchUserNames()->$result")
+        println("ApiServiceLoggerImpl: fetchUserNames()->$result")
         return result
     }
     
