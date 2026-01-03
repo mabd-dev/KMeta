@@ -97,7 +97,9 @@ internal class ClassFunctionGenerator(
                     .joinToString(", ") { it.name.asString() }
                     .let { if (it.isBlank()) "" else "<$it>" }
 
-            this.addStatement("val result = ${_root_ide_package_.com.mabd.kmeta.loggable.DELEGATE_NAME}.${functionName}$typedVariableNames($paramsNames)")
+            this.addStatement(
+                "val result = ${_root_ide_package_.com.mabd.kmeta.loggable.DELEGATE_NAME}.${functionName}$typedVariableNames($paramsNames)",
+            )
 
             var returnStr = ""
             if (hasReturn) {

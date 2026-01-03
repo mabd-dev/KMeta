@@ -3,7 +3,6 @@ package kmeta.mimicDataClass
 import com.mabd.kmeta.mimicDataClass.copyProcessor.Copy
 import com.mabd.kmeta.mimicDataClass.toStringProcessor.ToNiceString
 
-
 @Copy
 @ToNiceString
 class User(

@@ -3,7 +3,6 @@ package kmeta.loggable
 import com.mabd.kmeta.loggable.Loggable
 import com.mabd.kmeta.loggable.NoLog
 
-
 @Loggable(
     tag = "MyLogTag",
 )

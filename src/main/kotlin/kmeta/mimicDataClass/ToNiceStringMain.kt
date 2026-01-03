@@ -2,7 +2,6 @@ package kmeta.mimicDataClass
 
 import com.mabd.kmeta.mimicDataClass.toStringProcessor.ToNiceString
 
-
 @ToNiceString
 class Post(
     val name: String,

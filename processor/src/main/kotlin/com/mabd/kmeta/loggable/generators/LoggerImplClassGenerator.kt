@@ -5,8 +5,13 @@ import com.google.devtools.ksp.getDeclaredProperties
 import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.mabd.kmeta.loggable.DELEGATE_NAME
 import com.mabd.kmeta.loggable.toTypeVariable
-import com.squareup.kotlinpoet.*
+import com.squareup.kotlinpoet.ClassName
+import com.squareup.kotlinpoet.FileSpec
+import com.squareup.kotlinpoet.FunSpec
+import com.squareup.kotlinpoet.KModifier
 import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
+import com.squareup.kotlinpoet.PropertySpec
+import com.squareup.kotlinpoet.TypeSpec
 
 internal class LoggerImplClassGenerator(
     val declaration: KSClassDeclaration,
