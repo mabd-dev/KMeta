@@ -9,7 +9,7 @@ internal const val DELEGATE_NAME = "delegate"
 
 internal fun Sequence<KSAnnotation>.doLog(): Boolean =
     this
-        .filter { it.shortName.asString() == _root_ide_package_.com.mabd.kmeta.loggable.NoLog::class.java.simpleName }
+        .filter { it.shortName.asString() == NoLog::class.java.simpleName }
         .toList()
         .isEmpty()
 

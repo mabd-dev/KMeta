@@ -1,7 +1,8 @@
 package kmeta.loggable
 
-import loggable.Loggable
-import loggable.NoLog
+import com.mabd.kmeta.loggable.Loggable
+import com.mabd.kmeta.loggable.NoLog
+
 
 @Loggable(
     tag = "MyLogTag",

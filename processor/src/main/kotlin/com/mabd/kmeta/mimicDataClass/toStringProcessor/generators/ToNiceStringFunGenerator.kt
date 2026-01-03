@@ -3,10 +3,10 @@ package com.mabd.kmeta.mimicDataClass.toStringProcessor.generators
 import com.google.devtools.ksp.processing.KSPLogger
 import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.google.devtools.ksp.symbol.KSValueParameter
+import com.mabd.kmeta.common.createGeneratedAnnotation
+import com.mabd.kmeta.mimicDataClass.toStringProcessor.ToNiceString
 import com.squareup.kotlinpoet.FunSpec
 import com.squareup.kotlinpoet.ksp.toClassName
-import common.createGeneratedAnnotation
-import mimicDataClass.toStringProcessor.ToNiceString
 import kotlin.jvm.java
 
 internal class ToNiceStringFunGenerator(

@@ -1,6 +1,7 @@
 package kmeta.mimicDataClass
 
-import mimicDataClass.toStringProcessor.ToNiceString
+import com.mabd.kmeta.mimicDataClass.toStringProcessor.ToNiceString
+
 
 @ToNiceString
 class Post(

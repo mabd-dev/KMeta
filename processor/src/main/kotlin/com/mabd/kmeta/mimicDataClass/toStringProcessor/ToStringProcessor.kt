@@ -9,10 +9,10 @@ import com.google.devtools.ksp.symbol.KSAnnotated
 import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.google.devtools.ksp.symbol.Modifier
 import com.google.devtools.ksp.validate
+import com.mabd.kmeta.common.isDataClass
+import com.mabd.kmeta.mimicDataClass.common.ExtensionFileGenerator
+import com.mabd.kmeta.mimicDataClass.toStringProcessor.generators.ToNiceStringFunGenerator
 import com.squareup.kotlinpoet.ksp.writeTo
-import common.isDataClass
-import mimicDataClass.common.ExtensionFileGenerator
-import mimicDataClass.toStringProcessor.generators.ToNiceStringFunGenerator
 import kotlin.jvm.java
 
 /**

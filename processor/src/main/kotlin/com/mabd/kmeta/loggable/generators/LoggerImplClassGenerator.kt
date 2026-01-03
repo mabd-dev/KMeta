@@ -3,16 +3,10 @@ package com.mabd.kmeta.loggable.generators
 import com.google.devtools.ksp.getDeclaredFunctions
 import com.google.devtools.ksp.getDeclaredProperties
 import com.google.devtools.ksp.symbol.KSClassDeclaration
-import com.squareup.kotlinpoet.ClassName
-import com.squareup.kotlinpoet.FileSpec
-import com.squareup.kotlinpoet.FunSpec
-import com.squareup.kotlinpoet.KModifier
-import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
-import com.squareup.kotlinpoet.PropertySpec
-import com.squareup.kotlinpoet.TypeSpec
 import com.mabd.kmeta.loggable.DELEGATE_NAME
-import com.mabd.kmeta.loggable.Loggable
 import com.mabd.kmeta.loggable.toTypeVariable
+import com.squareup.kotlinpoet.*
+import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
 
 internal class LoggerImplClassGenerator(
     val declaration: KSClassDeclaration,
@@ -38,15 +32,15 @@ internal class LoggerImplClassGenerator(
 
         val delegateProp =
             PropertySpec
-                .builder(_root_ide_package_.com.mabd.kmeta.loggable.DELEGATE_NAME, interfaceClassName)
-                .initializer(_root_ide_package_.com.mabd.kmeta.loggable.DELEGATE_NAME)
+                .builder(DELEGATE_NAME, interfaceClassName)
+                .initializer(DELEGATE_NAME)
                 .addModifiers(KModifier.PRIVATE)
                 .build()
 
         val constructor =
             FunSpec
                 .constructorBuilder()
-                .addParameter(_root_ide_package_.com.mabd.kmeta.loggable.DELEGATE_NAME, interfaceClassName)
+                .addParameter(DELEGATE_NAME, interfaceClassName)
                 .build()
 
         val loggerClass =
@@ -62,14 +56,14 @@ internal class LoggerImplClassGenerator(
         val properties =
             declaration
                 .getDeclaredProperties()
-                .map { _root_ide_package_.com.mabd.kmeta.loggable.generators.ClassPropertyGenerator(it).generate(fileName) }
+                .map { ClassPropertyGenerator(it).generate(fileName) }
                 .toList()
         loggerClass.addProperties(properties)
 
         val functions =
             declaration
                 .getDeclaredFunctions()
-                .map { _root_ide_package_.com.mabd.kmeta.loggable.generators.ClassFunctionGenerator(it).generate(args) }
+                .map { ClassFunctionGenerator(it).generate(args) }
                 .toList()
         loggerClass.addFunctions(functions)
 
@@ -87,7 +81,7 @@ internal class LoggerImplClassGenerator(
 
         val loggableAnnotation =
             this.annotations.firstOrNull {
-                it.shortName.asString() == _root_ide_package_.com.mabd.kmeta.loggable.Loggable::class.java.name
+                it.shortName.asString() == com.mabd.kmeta.loggable.Loggable::class.java.name
             }
 
         loggableAnnotation?.arguments?.forEach { arg ->

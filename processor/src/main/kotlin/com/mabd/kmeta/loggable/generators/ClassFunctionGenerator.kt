@@ -1,6 +1,9 @@
 package com.mabd.kmeta.loggable.generators
 
 import com.google.devtools.ksp.symbol.KSFunctionDeclaration
+import com.mabd.kmeta.loggable.Loggable
+import com.mabd.kmeta.loggable.doLog
+import com.mabd.kmeta.loggable.toTypeVariable
 import com.squareup.kotlinpoet.FunSpec
 import com.squareup.kotlinpoet.KModifier
 import com.squareup.kotlinpoet.ParameterSpec
@@ -8,15 +11,11 @@ import com.squareup.kotlinpoet.ksp.toAnnotationSpec
 import com.squareup.kotlinpoet.ksp.toKModifier
 import com.squareup.kotlinpoet.ksp.toTypeName
 import com.squareup.kotlinpoet.ksp.toTypeParameterResolver
-import com.mabd.kmeta.loggable.DELEGATE_NAME
-import com.mabd.kmeta.loggable.Loggable
-import com.mabd.kmeta.loggable.doLog
-import com.mabd.kmeta.loggable.toTypeVariable
 
 internal class ClassFunctionGenerator(
     val declaration: KSFunctionDeclaration,
 ) {
-    fun generate(args: com.mabd.kmeta.loggable.Loggable): FunSpec =
+    fun generate(args: Loggable): FunSpec =
         FunSpec
             .builder(declaration.simpleName.asString())
             .addAnnotations(declaration)

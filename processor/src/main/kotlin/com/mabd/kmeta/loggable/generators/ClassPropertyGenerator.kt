@@ -1,14 +1,14 @@
 package com.mabd.kmeta.loggable.generators
 
 import com.google.devtools.ksp.symbol.KSPropertyDeclaration
+import com.mabd.kmeta.loggable.DELEGATE_NAME
+import com.mabd.kmeta.loggable.doLog
 import com.squareup.kotlinpoet.FunSpec
 import com.squareup.kotlinpoet.KModifier
 import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.ksp.toAnnotationSpec
 import com.squareup.kotlinpoet.ksp.toKModifier
 import com.squareup.kotlinpoet.ksp.toTypeName
-import com.mabd.kmeta.loggable.DELEGATE_NAME
-import com.mabd.kmeta.loggable.doLog
 
 internal class ClassPropertyGenerator(
     val declaration: KSPropertyDeclaration,
@@ -50,7 +50,7 @@ internal class ClassPropertyGenerator(
         val func =
             FunSpec
                 .getterBuilder()
-                .addStatement("val result = ${_root_ide_package_.com.mabd.kmeta.loggable.DELEGATE_NAME}.${prop.simpleName.asString()}")
+                .addStatement("val result = ${DELEGATE_NAME}.${prop.simpleName.asString()}")
 
         if (prop.annotations.doLog()) {
             val str =
@@ -74,7 +74,7 @@ internal class ClassPropertyGenerator(
             FunSpec
                 .setterBuilder()
                 .addParameter("value", prop.type.toTypeName())
-                .addStatement("${_root_ide_package_.com.mabd.kmeta.loggable.DELEGATE_NAME}.${prop.simpleName.asString()} = value")
+                .addStatement("${DELEGATE_NAME}.${prop.simpleName.asString()} = value")
 
         if (prop.annotations.doLog()) {
             val str =

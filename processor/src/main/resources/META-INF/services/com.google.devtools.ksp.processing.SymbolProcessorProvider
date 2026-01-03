@@ -1,3 +1,3 @@
-loggable.LoggableProvider
-mimicDataClass.copyProcessor.CopyProvider
-mimicDataClass.toStringProcessor.ToStringProvider
+com.mabd.kmeta.loggable.LoggableProvider
+com.mabd.kmeta.mimicDataClass.copyProcessor.CopyProvider
+com.mabd.kmeta.mimicDataClass.toStringProcessor.ToStringProvider

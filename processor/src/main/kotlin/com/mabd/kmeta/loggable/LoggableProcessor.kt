@@ -9,10 +9,8 @@ import com.google.devtools.ksp.symbol.KSAnnotated
 import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.google.devtools.ksp.symbol.Modifier
 import com.google.devtools.ksp.validate
-import com.squareup.kotlinpoet.ksp.writeTo
 import com.mabd.kmeta.loggable.generators.LoggerImplClassGenerator
-import kotlin.sequences.filter
-import kotlin.sequences.forEach
+import com.squareup.kotlinpoet.ksp.writeTo
 
 /**
  * @param tag if [tag] is blank, generated class name will be used as a tag
@@ -46,7 +44,7 @@ class LoggableProcessor(
         }
 
         declarations.forEach {
-            val fileSpec = _root_ide_package_.com.mabd.kmeta.loggable.generators.LoggerImplClassGenerator(it).generate()
+            val fileSpec = LoggerImplClassGenerator(it).generate()
             fileSpec.writeTo(env.codeGenerator, Dependencies(false))
         }
         return emptyList()
@@ -54,7 +52,7 @@ class LoggableProcessor(
 
     private fun getLoggableAnnotationDeclarations(resolver: Resolver): Sequence<KSClassDeclaration> =
         resolver
-            .getSymbolsWithAnnotation(_root_ide_package_.com.mabd.kmeta.loggable.Loggable::class.java.name)
+            .getSymbolsWithAnnotation(Loggable::class.java.name)
             .filterIsInstance<KSClassDeclaration>()
             .distinct()
             .filter { it.validate() }

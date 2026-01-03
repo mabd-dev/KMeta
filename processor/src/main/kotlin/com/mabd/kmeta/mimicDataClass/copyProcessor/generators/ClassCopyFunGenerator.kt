@@ -3,11 +3,11 @@ package com.mabd.kmeta.mimicDataClass.copyProcessor.generators
 import com.google.devtools.ksp.processing.KSPLogger
 import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.google.devtools.ksp.symbol.KSValueParameter
+import com.mabd.kmeta.common.createGeneratedAnnotation
 import com.squareup.kotlinpoet.FunSpec
 import com.squareup.kotlinpoet.ParameterSpec
 import com.squareup.kotlinpoet.ksp.toClassName
 import com.squareup.kotlinpoet.ksp.toTypeName
-import common.createGeneratedAnnotation
 
 class ClassCopyFunGenerator(
     private val declaration: KSClassDeclaration,
