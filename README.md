@@ -100,8 +100,8 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.M-Abd-Elmawla:KMeta:@latest")
-    ksp("com.github.M-Abd-Elmawla:KMeta:@latest")
+    implementation("com.github.mabd-dev:KMeta:@latest")
+    ksp("com.github.mabd-dev:KMeta:@latest")
 }
 
 kotlin {
