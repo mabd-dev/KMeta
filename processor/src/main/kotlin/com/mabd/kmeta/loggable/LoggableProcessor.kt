@@ -44,7 +44,7 @@ class LoggableProcessor(
         }
 
         declarations.forEach {
-            val fileSpec = LoggerImplClassGenerator(it).generate()
+            val fileSpec = LoggerImplClassGenerator(it).generate(env)
             fileSpec.writeTo(env.codeGenerator, Dependencies(false))
         }
         return emptyList()

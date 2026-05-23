@@ -2,21 +2,17 @@ package com.mabd.kmeta.loggable.generators
 
 import com.google.devtools.ksp.getDeclaredFunctions
 import com.google.devtools.ksp.getDeclaredProperties
+import com.google.devtools.ksp.processing.SymbolProcessorEnvironment
 import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.mabd.kmeta.loggable.DELEGATE_NAME
 import com.mabd.kmeta.loggable.toTypeVariable
-import com.squareup.kotlinpoet.ClassName
-import com.squareup.kotlinpoet.FileSpec
-import com.squareup.kotlinpoet.FunSpec
-import com.squareup.kotlinpoet.KModifier
+import com.squareup.kotlinpoet.*
 import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
-import com.squareup.kotlinpoet.PropertySpec
-import com.squareup.kotlinpoet.TypeSpec
 
 internal class LoggerImplClassGenerator(
     val declaration: KSClassDeclaration,
 ) {
-    fun generate(): FileSpec {
+    fun generate(env: SymbolProcessorEnvironment): FileSpec {
         val packageName = declaration.packageName.asString()
         val interfaceName = declaration.simpleName.asString()
         val fileName = "${interfaceName}LoggerImpl"
@@ -25,8 +21,10 @@ internal class LoggerImplClassGenerator(
         val typeParameters = declaration.typeParameters.map { it.toTypeVariable() }
 
         val loggerClassName = ClassName(packageName, fileName)
+        val classNames = declaration.getSuperTypeNames() + interfaceName
+
         val interfaceClassName =
-            ClassName(packageName, interfaceName)
+            ClassName(packageName, *classNames.toTypedArray())
                 .let {
                     if (typeParameters.isEmpty()) {
                         it
@@ -98,5 +96,14 @@ internal class LoggerImplClassGenerator(
         return _root_ide_package_.com.mabd.kmeta.loggable.Loggable(
             tag = tag,
         )
+    }
+
+    private fun KSClassDeclaration.getSuperTypeNames(): List<String> {
+        return this.superTypes.mapNotNull { superType ->
+            val superTypeElement = superType.element ?: return@mapNotNull null
+            val superTypeName = superTypeElement.toString()
+            val parentSuperTypes = (superType.resolve().declaration as? KSClassDeclaration)?.let { it.getSuperTypeNames() } ?: emptyList()
+            parentSuperTypes + superTypeName
+        }.flatten().toList()
     }
 }
