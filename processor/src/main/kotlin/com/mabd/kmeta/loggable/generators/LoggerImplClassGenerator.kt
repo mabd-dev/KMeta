@@ -104,11 +104,17 @@ internal class LoggerImplClassGenerator(
     }
 
     private fun KSClassDeclaration.getSuperTypeNames(): List<String> {
-        return this.superTypes.mapNotNull { superType ->
-            val superTypeElement = superType.element ?: return@mapNotNull null
-            val superTypeName = superTypeElement.toString()
-            val parentSuperTypes = (superType.resolve().declaration as? KSClassDeclaration)?.let { it.getSuperTypeNames() } ?: emptyList()
-            parentSuperTypes + superTypeName
-        }.flatten().toList()
+        return this.superTypes
+            .mapNotNull { superType ->
+                val superTypeElement = superType.element ?: return@mapNotNull null
+                val superTypeName = superTypeElement.toString()
+                val parentSuperTypes =
+                    (superType.resolve().declaration as? KSClassDeclaration)?.let {
+                        it.getSuperTypeNames()
+                    } ?: emptyList()
+
+                parentSuperTypes + superTypeName
+            }.flatten()
+            .toList()
     }
 }
